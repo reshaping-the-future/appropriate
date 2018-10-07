@@ -7,11 +7,11 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import android.preference.SwitchPreference;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -260,7 +260,7 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 				R.string.key_sync_images, R.string.key_sync_sms, R.string.key_sync_contacts
 		};
 		for (int preferenceKey : preferencesRequiringPermissions) {
-			CheckBoxPreference preference = (CheckBoxPreference) findPreference(getString(preferenceKey));
+			SwitchPreference preference = (SwitchPreference) findPreference(getString(preferenceKey));
 			preference.setOnPreferenceChangeListener(SettingsActivity.this);
 			if (preference.isChecked()) {
 				onPreferenceChange(preference, Boolean.TRUE);
@@ -338,7 +338,7 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 				if (grantResults.length > 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
 					Toast.makeText(SettingsActivity.this, R.string.permission_write_storage_error, Toast.LENGTH_LONG)
 							.show();
-					CheckBoxPreference preference = (CheckBoxPreference) findPreference(getString(R.string
+					SwitchPreference preference = (SwitchPreference) findPreference(getString(R.string
 							.key_sync_images));
 					preference.setChecked(false);
 				}
@@ -355,8 +355,7 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 				boolean smsGranted = !(noReadSMS || noSendSMS);
 				if (!smsGranted) {
 					Toast.makeText(SettingsActivity.this, R.string.permission_sms_error, Toast.LENGTH_LONG).show();
-					CheckBoxPreference preference = (CheckBoxPreference) findPreference(getString(R.string
-							.key_sync_sms));
+					SwitchPreference preference = (SwitchPreference) findPreference(getString(R.string.key_sync_sms));
 					preference.setChecked(false);
 				}
 				break;
@@ -373,7 +372,7 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 				if (!contactsGranted) {
 					Toast.makeText(SettingsActivity.this, R.string.permission_contacts_error, Toast.LENGTH_LONG)
 							.show();
-					CheckBoxPreference preference = (CheckBoxPreference) findPreference(getString(R.string
+					SwitchPreference preference = (SwitchPreference) findPreference(getString(R.string
 							.key_sync_contacts));
 					preference.setChecked(false);
 				}

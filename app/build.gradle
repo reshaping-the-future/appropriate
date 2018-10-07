@@ -26,8 +26,8 @@ android {
 		}
 
 		buildTypes.each {
-			it.buildConfigField 'String', 'POD_ADMIN_PASSWORD', project.adminPassword
-			it.buildConfigField 'String', 'POD_NETWORK_PASSWORD', project.networkPassword
+			it.buildConfigField 'String', 'POD_ADMIN_PASSWORD', '"' + project.adminPassword + '"'
+			it.buildConfigField 'String', 'POD_NETWORK_PASSWORD', '"' + project.networkPassword + '"'
 		}
 	}
 

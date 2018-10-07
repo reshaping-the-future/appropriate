@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">Pod</string>
+	<string name="app_name">APPropriate</string>
 
 	<string name="title_setup_pod">Configure your APPropriate</string>
 	<string name="menu_setup_pod">APPropriate settings</string>
