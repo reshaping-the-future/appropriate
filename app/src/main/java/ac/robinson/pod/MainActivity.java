@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -153,19 +154,8 @@ public class MainActivity extends BasePodActivity {
 		}
 
 		if (preferences.getBoolean(getString(R.string.key_completed_initial_setup), false)) {
-			// need location permission to scan for Pod on more recent devices
-			if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) !=
-					PackageManager.PERMISSION_GRANTED) {
-				if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission
-						.ACCESS_COARSE_LOCATION)) {
-					Toast.makeText(MainActivity.this, R.string.permission_access_coarse_location_rationale, Toast
-							.LENGTH_LONG)
-							.show();
-				}
-				ActivityCompat.requestPermissions(MainActivity.this, new String[]{
-						Manifest.permission.ACCESS_COARSE_LOCATION
-				}, PERMISSION_COARSE_LOCATION);
-			}
+			// need location permission to scan for Pod on more recent devices (to get network name)
+			checkLocationPermission();
 		}
 
 		mPodConnectionView = findViewById(R.id.pod_connection_view);
@@ -1463,6 +1453,22 @@ public class MainActivity extends BasePodActivity {
 		TextView title;
 	}
 
+	private void checkLocationPermission() {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1 &&
+				ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) !=
+						PackageManager.PERMISSION_GRANTED) {
+			if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission
+					.ACCESS_COARSE_LOCATION)) {
+				Toast.makeText(MainActivity.this, R.string.permission_access_coarse_location_rationale, Toast
+						.LENGTH_LONG)
+						.show();
+			}
+			ActivityCompat.requestPermissions(MainActivity.this, new String[]{
+					Manifest.permission.ACCESS_COARSE_LOCATION
+			}, PERMISSION_COARSE_LOCATION);
+		}
+	}
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
@@ -1473,6 +1479,7 @@ public class MainActivity extends BasePodActivity {
 					finish(); // don't allow anything else - must either explicitly skip or setup pod before continuing
 				} else {
 					// initiate the new connection and synchronise
+					checkLocationPermission();
 					mOwnPod = SettingsActivity.getOwnPodPin(MainActivity.this);
 					if (mOwnPod >= 0) {
 						Log.d(TAG, "First time initialising - requesting connection to own Pod");
