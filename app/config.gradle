@@ -1,0 +1,10 @@
+// This APPropriate proof of concept uses an appropriated wireless USB drive (Verbatim MediaShare Wireless Mini) to
+// provide its functionality. As a result, it needs to use simple password-based login, and a network naming scheme
+// based on a hash of the PIN to ensure a basic level of security.
+//
+// To build your own APPropriate, set your own passwords here, and on the USB drive. Avoid making these values public.
+//
+// Better still, lobby device manufacturers to incorporate this type of local cloud functionality into their own
+// devices, with proper security features, so workarounds like this are not needed.
+project.ext.adminPassword = '*** YOUR PASSWORD HERE ***' // to log in to the admin interface
+project.ext.networkPassword = '*** YOUR PASSWORD HERE ***' // to connect to the network

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Pod</string>
+
+	<string name="title_setup_pod">Configure your APPropriate</string>
+	<string name="menu_setup_pod">APPropriate settings</string>
+
+	<string name="menu_connect_pod">Connect to an APPropriate</string>
+	<string name="menu_save_pod_setup">Save APPropriate settings</string>
+	<string name="menu_add_item">Add a new item</string>
+	<string name="menu_take_photo">Take a photo</string>
+	<string name="menu_add_contact">Add a contact</string>
+	<string name="menu_cancel">Cancel</string>
+	<string name="menu_done">Done</string>
+
+	<string name="searching_for_pod">Searching for your APPropriate…</string>
+	<string name="syncing_pod">Synchronising your data…</string>
+	<string name="syncing_complete_show_data">Synchronisation complete.\n\nTouch here to show your data or change settings.</string>
+	<string name="syncing_complete_exit">Finished</string>
+	<string name="updating_pod_pin">Updating your APPropriate\'s PIN…</string>
+	<string name="updating_pod_settings">Setting up your APPropriate – this may take some time…</string>
+
+	<string name="hint_pod_connection_reconnect">APPropriate connection lost – please re-enter your PIN</string>
+	<string name="hint_set_pod_pin">Please set a PIN for your APPropriate to continue, or press back to cancel</string>
+	<string name="hint_starting_sync">Synchronising your items</string>
+	<string name="hint_visitor_pod_title">Connect to a guest APPropriate</string>
+	<string name="hint_error_error_connecting_pod">Error: unable to connect to your APPropriate – is it charged and turned on?</string>
+	<string name="hint_enter_pin">Please enter your APPropriate\'s PIN</string>
+	<string name="hint_incorrect_pin">Sorry, that PIN is incorrect</string>
+	<string name="hint_non_matching_pin">Oops – that PIN doesn\'t match. Please try again</string>
+	<string name="hint_error_changing_pin">Error changing PIN – please try again</string>
+	<string name="hint_pin_changed">Your PIN has been changed</string>
+	<string name="hint_change_pin_current_pin">Enter your current PIN</string>
+	<string name="hint_change_pin_current_pin_reason">So we know that it is you</string>
+	<string name="hint_change_pin_new_pin">Choose a new PIN</string>
+	<string name="hint_change_pin_new_pin_suggestion">Your PIN should be a four-digit number that only you know. Please don\'t share this number with anybody else</string>
+	<string name="hint_own_data_sync_complete">Synchronisation complete</string>
+	<string name="hint_visitor_data_sync_complete">Visitor data synchronisation complete</string>
+	<string name="hint_visitor_data_removed">Browsing finished – your data has been removed from this phone</string>
+	<string name="hint_type_message">Type your message</string>
+	<string name="hint_error_reading_messages">Error reading messages - please try again</string>
+	<string name="hint_error_saving_messages">Error saving messages - please try again</string>
+	<string name="send_button">Send message</string>
+	<string name="title_send_sms">Send message</string>
+	<string name="message_send_sms">Send now, from this phone number, or wait until you return to your own phone?</string>
+	<string name="menu_now">Send now</string>
+	<string name="menu_later">Send later</string>
+	<string name="pod_sms_note">\n\nSent from my APPropriate</string>
+	<string name="hint_press_send_to_deliver">Press send to deliver your message now</string>
+	<string name="hint_messages_saved_for_later">Your message will be sent when you synchronise with your own phone</string>
+	<string name="media_thumbnail_image">Media thumbnail image</string>
+	<string name="title_change_background">Background image</string>
+	<string name="message_change_background_succeeded">Background image successfully changed</string>
+	<string name="message_change_background_failed">Error: unable to change background image – is your APPropriate still connected?</string>
+
+	<!-- content browsers -->
+	<string name="choose_app">Choose an app to browse synchronised content</string>
+	<string name="finished_browsing">Finished</string>
+	<string name="background_image">Background image</string>
+	<string name="no_media">No media found</string>
+	<string name="no_media_add_own">No media found – touch + to add items</string>
+	<string name="no_suitable_app_found">Error: no app found to handle this action</string>
+	<string name="title_gallery_browser">Photo gallery</string>
+	<string name="title_sms_browser">Text messages</string>
+	<string name="title_contacts_browser">Contacts</string>
+	<string name="title_add_contact">Add contact</string>
+	<string name="title_audio_browser">Music library</string>
+	<string name="title_video_browser">Videos</string>
+	<string name="hint_search_contacts">Search contacts…</string>
+	<string name="hint_add_contact_name">Name</string>
+	<string name="hint_add_contact_number">Phone number</string>
+	<string name="hint_add_contact_save">Save</string>
+	<string name="hint_add_contact_empty">Please make sure you have entered a contact name and number before saving</string>
+
+	<!-- preference values -->
+	<string name="summary_double_tap_to_restore">Double tap to restore default</string>
+	<string name="preference_value_reset">The default value has been restored</string>
+	<string name="title_items_to_sync">Items to synchronise</string>
+	<string name="title_sync_images">Photos</string>
+	<string name="summary_sync_images">Save photos to your APPropriate</string>
+	<string name="title_sync_sms">SMS messages</string>
+	<string name="summary_sync_sms">Save SMS messages to your APPropriate</string>
+	<string name="title_sync_contacts">Contacts</string>
+	<string name="summary_sync_contacts">Save contacts to your APPropriate</string>
+	<string name="title_sync_preferences">Synchronisation preferences</string>
+	<string name="title_sync_automatically">Auto-sync</string>
+	<string name="summary_sync_automatically">Automatically synchronise when your APPropriate is connected</string>
+	<string name="title_item_sync_count">Number of items to synchronise</string>
+	<string name="title_item_sync_frequency">Default synchronisation interval</string>
+	<string name="hint_item_sync_frequency_units">mins</string>
+	<string name="title_setup_preferences">APPropriate setup</string>
+	<string name="title_own_pod_pin">APPropriate PIN</string>
+	<string name="summary_own_pod_pin">Change your APPropriate\'s PIN</string>
+	<string name="title_own_pod_background">APPropriate background</string>
+	<string name="summary_own_pod_background">Change your APPropriate\'s background image</string>
+
+	<!-- welcome screen -->
+	<string name="welcome_skip">Skip</string>
+	<string name="welcome_next">Next</string>
+	<string name="welcome_done">Done</string>
+	<string name="title_welcome">Welcome to APPropriate</string>
+	<string name="message_welcome">APPropriate saves your most recent data so that you can leave your phone at home.\n\nThe next few screens will help you get set up and choose what media to synchronise, then set a PIN so that nobody else can access your data.</string>
+	<string name="title_connect_pod">Connect to your APPropriate</string>
+	<string name="message_connect_pod">Enter the four-digit number written on the back of your APPropriate</string>
+	<string name="title_set_pin">Connected!</string>
+	<string name="message_set_pin">Now, set your PIN – this should be a four-digit number that only you know. Please don\'t tell anybody else this number.</string>
+	<string name="title_confirm_pin">Confirm your PIN</string>
+	<string name="message_set_pin_confirm">Type your new PIN again, so we can check you entered it correctly.</string>
+	<string name="title_select_sync_items">What should we sync?</string>
+	<string name="message_select_sync_items">Pick which types of data you would like to save to your APPropriate. You can always change your mind later in Settings.</string>
+	<string name="title_setup_complete">All done!</string>
+	<string name="message_setup_complete">APPropriate is now ready to use.\n\nPress done to continue – and don\'t hesitate to get in touch if you encounter any problems.</string>
+	<string name="title_skip_setup">Skip setup?</string>
+	<string name="message_skip_setup">If you don\'t have your own APPropriate, or would like to set yours up later, you can skip setup for now.\n\nTo continue setup now, press cancel.</string>
+	<string name="title_skip_pin">Skip changing your PIN?</string>
+	<string name="message_skip_pin">If you don\'t want to change your PIN, or have already changed it, you can skip this step for now. You can always change your PIN later in Settings.\n\nTo change your PIN now, press cancel.</string>
+
+	<!-- permission explanations -->
+	<string name="permission_access_coarse_location_rationale">APPropriate needs location access in order to find nearby devices. Please grant this permission to connect to your APPropriate</string>
+	<string name="permission_access_coarse_location_error">Error: APPropriate has not been granted location access, so will not be able to connect. Please allow APPropriate to access location and try again</string>
+	<string name="permission_write_storage_rationale">APPropriate needs storage access in order to synchronise photos. Please grant this permission to enable this feature</string>
+	<string name="permission_write_storage_error">Error: APPropriate has not been granted storage access. Please allow APPropriate to access storage and try again</string>
+	<string name="permission_sms_rationale">APPropriate needs SMS access in order to synchronise text messages. Please grant this permission to enable this feature</string>
+	<string name="permission_sms_error">Error: APPropriate has not been granted SMS access. Please allow APPropriate to access SMS messages and try again</string>
+	<string name="permission_contacts_rationale">APPropriate needs Contacts access in order to synchronise your contacts. Please grant this permission to enable this feature</string>
+	<string name="permission_contacts_error">Error: APPropriate has not been granted Contacts access. Please allow APPropriate to access Contacts and try again</string>
+	<string name="permission_call_phone_rationale">APPropriate needs phone access in order to make phone calls. Please grant this permission to enable this feature</string>
+	<string name="permission_call_phone_error">Error: APPropriate has not been granted phone access. Please allow APPropriate to access the phone and try again</string>
+</resources>

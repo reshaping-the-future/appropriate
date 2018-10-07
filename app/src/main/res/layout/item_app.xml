@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	app:layout_widthPercent="50%">
+
+	<ImageView
+		android:id="@+id/app_icon"
+		android:layout_alignParentTop="true"
+		android:contentDescription="@string/choose_app"
+		android:scaleType="centerInside"
+		app:layout_aspectRatio="220%"
+		app:layout_widthPercent="100%" />
+
+	<TextView
+		android:id="@+id/app_title"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/app_icon"
+		android:layout_centerHorizontal="true"
+		android:paddingBottom="8dp"
+		android:textColor="@android:color/white" />
+</android.support.percent.PercentRelativeLayout>

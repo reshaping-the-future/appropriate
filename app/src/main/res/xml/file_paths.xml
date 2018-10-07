@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+	<files-path
+		name="own_gallery"
+		path="gallery/" />
+	<cache-path
+		name="visitor_gallery"
+		path="gallery/" />
+	<files-path
+		name="own_sms"
+		path="sms/" />
+	<cache-path
+		name="visitor_sms"
+		path="sms/" />
+</paths>

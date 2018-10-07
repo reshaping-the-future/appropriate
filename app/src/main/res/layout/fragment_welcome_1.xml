@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/welcome_fragment"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/welcome_page_1_background"
+	android:paddingBottom="@dimen/welcome_bottom_padding"
+	android:paddingTop="@dimen/welcome_top_padding">
+
+	<FrameLayout
+		android:id="@+id/welcome_screen_top_icon"
+		android:layout_width="match_parent"
+		android:layout_height="48dp"
+		android:layout_alignParentTop="true"
+		android:layout_marginBottom="@dimen/activity_vertical_margin"
+		android:clipChildren="false">
+
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:layout_marginLeft="@dimen/welcome_image_horizontal_padding"
+			android:layout_marginRight="@dimen/welcome_image_horizontal_padding"
+			android:contentDescription="@null"
+			android:scaleType="centerInside"
+			android:src="@mipmap/ic_launcher" />
+
+	</FrameLayout>
+
+	<TextView
+		android:id="@+id/welcome_screen_heading"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/welcome_screen_top_icon"
+		android:layout_marginBottom="@dimen/welcome_heading_bottom_margin"
+		android:gravity="bottom|center_horizontal"
+		android:paddingLeft="@dimen/welcome_text_horizontal_padding"
+		android:paddingRight="@dimen/welcome_text_horizontal_padding"
+		android:text="@string/title_connect_pod"
+		android:textColor="@color/text_color_primary_light"
+		android:textSize="@dimen/welcome_heading_size" />
+
+	<ScrollView
+		android:id="@+id/welcome_screen_initial_connect"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_alignParentBottom="true"
+		android:layout_below="@id/welcome_screen_heading"
+		android:requiresFadingEdge="vertical">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_horizontal"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/welcome_screen_description"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="2"
+				android:gravity="top|center_horizontal"
+				android:minHeight="@dimen/welcome_description_min_height"
+				android:paddingLeft="@dimen/welcome_text_horizontal_padding"
+				android:paddingRight="@dimen/welcome_text_horizontal_padding"
+				android:text="@string/message_connect_pod"
+				android:textColor="@color/text_color_secondary_light"
+				android:textSize="@dimen/welcome_description_size" />
+
+			<EditText
+				android:id="@+id/welcome_connect_initial_pin"
+				android:layout_width="100dp"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="@dimen/activity_vertical_margin"
+				android:layout_marginTop="@dimen/activity_vertical_margin"
+				android:gravity="center_horizontal"
+				android:imeOptions="actionDone|flagNoExtractUi"
+				android:inputType="numberPassword"
+				android:lines="1"
+				android:maxLength="4"
+				android:textColor="@color/text_color_secondary_light"
+				android:textSize="@dimen/pin_text_size" />
+		</LinearLayout>
+	</ScrollView>
+
+	<LinearLayout
+		android:id="@+id/initial_pod_search_indicator"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerInParent="true"
+		android:gravity="center"
+		android:orientation="vertical"
+		android:visibility="gone">
+
+		<ProgressBar
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:indeterminate="true" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/activity_vertical_margin"
+			android:gravity="center_horizontal"
+			android:paddingLeft="@dimen/welcome_text_horizontal_padding"
+			android:paddingRight="@dimen/welcome_text_horizontal_padding"
+			android:text="@string/searching_for_pod"
+			android:textColor="@color/text_color_primary_light"
+			android:textSize="@dimen/subtitle_text_size" />
+
+		<Button
+			android:id="@+id/welcome_connect_cancel"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/activity_vertical_margin"
+			android:onClick="handleClick"
+			android:text="@string/menu_cancel" />
+	</LinearLayout>
+
+</RelativeLayout>

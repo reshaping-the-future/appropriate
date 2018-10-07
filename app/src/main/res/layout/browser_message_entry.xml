@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<RelativeLayout
+		android:id="@+id/message_entry"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentEnd="true"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentStart="true"
+		android:padding="8dp">
+
+		<ImageButton
+			android:id="@+id/message_send_button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentEnd="true"
+			android:layout_alignParentRight="true"
+			android:layout_centerVertical="true"
+			android:background="@null"
+			android:contentDescription="@string/send_button"
+			android:src="@drawable/ic_send_amber_a700_36dp" />
+
+		<EditText
+			android:id="@+id/entered_message"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="12dp"
+			android:layout_marginRight="12dp"
+			android:layout_toLeftOf="@id/message_send_button"
+			android:layout_toStartOf="@id/message_send_button"
+			android:gravity="top|start"
+			android:hint="@string/hint_type_message"
+			android:imeOptions="flagNoExtractUi"
+			android:inputType="textMultiLine|textCapSentences|textAutoComplete|textAutoCorrect"
+			android:scrollbars="vertical" />
+
+	</RelativeLayout>
+
+	<ListView
+		android:id="@+id/message_list"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_above="@id/message_entry"
+		android:background="@color/messageList"
+		android:clipToPadding="false"
+		android:divider="@null"
+		android:dividerHeight="0px"
+		android:paddingBottom="8dp"
+		android:paddingTop="8dp"
+		android:scrollbarStyle="outsideOverlay"
+		android:transcriptMode="alwaysScroll" />
+
+</RelativeLayout>

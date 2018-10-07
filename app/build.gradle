@@ -1,0 +1,60 @@
+apply plugin: 'com.android.application'
+apply from: 'config.gradle'
+
+android {
+	compileSdkVersion 28
+	defaultConfig {
+		applicationId 'ac.robinson.pod'
+		minSdkVersion 14
+		targetSdkVersion 28
+		versionCode 8
+		versionName '1.2'
+		resConfigs 'en'
+	}
+
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_1_7
+		targetCompatibility JavaVersion.VERSION_1_7
+	}
+
+	buildTypes {
+		release {
+			minifyEnabled false // TODO: fix proguard files to be able to use minification
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+			shrinkResources false
+		}
+
+		buildTypes.each {
+			it.buildConfigField 'String', 'POD_ADMIN_PASSWORD', project.adminPassword
+			it.buildConfigField 'String', 'POD_NETWORK_PASSWORD', project.networkPassword
+		}
+	}
+
+	packagingOptions {
+		// try to handle license duplication (use only one copy) - https://stackoverflow.com/a/29682960/1993220
+		pickFirst 'META-INF/LICENSE'
+	}
+}
+
+dependencies {
+	implementation 'com.android.support:appcompat-v7:28.0.0'
+	implementation 'com.android.support:percent:28.0.0'
+	implementation 'com.android.support:design:28.0.0'
+
+	implementation 'com.facebook.fresco:fresco:1.10.0' // for simpler image loading
+	implementation 'com.squareup.okhttp3:okhttp:3.10.0' // for simpler android networking
+	implementation 'org.jsoup:jsoup:1.10.1' // for html parsing - TODO: later versions (e.g., 1.10.3) break sync - fix
+	implementation('de.ruedigermoeller:fst:2.51') {
+		// drop-in replacement for faster serialization (e.g., storing contacts and SMS)
+		exclude group: 'commons-logging', module: 'commons-logging'
+	}
+	implementation 'com.googlecode.libphonenumber:libphonenumber:8.6.0' // for phone number normalisation
+
+	implementation 'com.google.code.findbugs:annotations:3.0.1', {
+		// need to exclude, or build breaks - DexException: Multiple dex files define Lnet/jcip/annotations/GuardedBy;
+		// see: https://github.com/noveogroup/android-check/issues/22
+		exclude module: 'jsr305'
+		exclude module: 'jcip-annotations'
+	}
+}

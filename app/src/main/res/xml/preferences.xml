@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:seekbar="http://schemas.android.com/apk/res-auto">
+
+	<PreferenceCategory android:title="@string/title_items_to_sync">
+		<CheckBoxPreference
+			android:defaultValue="false"
+			android:key="@string/key_sync_images"
+			android:summary="@string/summary_sync_images"
+			android:title="@string/title_sync_images" />
+
+		<CheckBoxPreference
+			android:defaultValue="false"
+			android:key="@string/key_sync_sms"
+			android:summary="@string/summary_sync_sms"
+			android:title="@string/title_sync_sms" />
+
+		<CheckBoxPreference
+			android:defaultValue="false"
+			android:key="@string/key_sync_contacts"
+			android:summary="@string/summary_sync_contacts"
+			android:title="@string/title_sync_contacts" />
+	</PreferenceCategory>
+
+	<PreferenceCategory android:title="@string/title_sync_preferences">
+		<ac.robinson.pod.views.SeekBarPreference
+			android:defaultValue="@dimen/default_item_sync_count"
+			android:key="@string/key_sync_item_count"
+			android:summary="@string/summary_double_tap_to_restore"
+			android:title="@string/title_item_sync_count"
+			seekbar:appendUnits=""
+			seekbar:interval="@dimen/item_sync_count_interval"
+			seekbar:maxVal="@dimen/item_sync_count_max"
+			seekbar:minVal="@dimen/item_sync_count_min"
+			seekbar:prependUnits="" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/title_setup_preferences">
+		<Preference
+			android:key="@string/key_own_pod_background"
+			android:summary="@string/summary_own_pod_background"
+			android:title="@string/title_own_pod_background" />
+		<Preference
+			android:key="@string/key_own_pod_pin"
+			android:summary="@string/summary_own_pod_pin"
+			android:title="@string/title_own_pod_pin" />
+	</PreferenceCategory>
+</PreferenceScreen>

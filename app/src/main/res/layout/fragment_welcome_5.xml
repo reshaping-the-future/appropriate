@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/welcome_fragment"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/welcome_page_5_background"
+	android:orientation="vertical"
+	android:paddingBottom="@dimen/welcome_bottom_padding"
+	android:paddingTop="@dimen/welcome_top_padding"
+	android:weightSum="6">
+
+	<FrameLayout
+		android:id="@+id/welcome_screen_top_icon"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="3"
+		android:paddingLeft="@dimen/welcome_image_horizontal_padding"
+		android:paddingRight="@dimen/welcome_image_horizontal_padding">
+
+		<ImageView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:contentDescription="@null"
+			android:scaleType="centerInside"
+			android:src="@drawable/ic_launcher_large" />
+
+	</FrameLayout>
+
+	<TextView
+		android:id="@+id/welcome_screen_heading"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_marginBottom="@dimen/welcome_heading_bottom_margin"
+		android:layout_weight="1"
+		android:gravity="bottom|center_horizontal"
+		android:paddingLeft="@dimen/welcome_text_horizontal_padding"
+		android:paddingRight="@dimen/welcome_text_horizontal_padding"
+		android:text="@string/title_setup_complete"
+		android:textColor="@color/text_color_primary_light"
+		android:textSize="@dimen/welcome_heading_size" />
+
+	<TextView
+		android:id="@+id/welcome_screen_description"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="2"
+		android:gravity="top|center_horizontal"
+		android:minHeight="@dimen/welcome_description_min_height"
+		android:paddingLeft="@dimen/welcome_text_horizontal_padding"
+		android:paddingRight="@dimen/welcome_text_horizontal_padding"
+		android:text="@string/message_setup_complete"
+		android:textColor="@color/text_color_secondary_light"
+		android:textSize="@dimen/welcome_description_size" />
+
+</LinearLayout>

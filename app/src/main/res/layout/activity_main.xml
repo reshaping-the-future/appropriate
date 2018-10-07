@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:fresco="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:keepScreenOn="true"
+	tools:mContext="ac.robinson.pod.MainActivity">
+
+	<LinearLayout
+		android:id="@+id/pod_connection_view"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerInParent="true"
+		android:gravity="center"
+		android:orientation="vertical"
+		android:visibility="gone">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/hint_visitor_pod_title"
+			android:textSize="@dimen/title_text_size" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:text="@string/hint_enter_pin"
+			android:textSize="@dimen/subtitle_text_size" />
+
+		<EditText
+			android:id="@+id/pod_connection_pin"
+			android:layout_width="100dp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/activity_vertical_margin"
+			android:gravity="center_horizontal"
+			android:imeOptions="actionDone"
+			android:inputType="numberPassword"
+			android:lines="1"
+			android:maxLength="4"
+			android:textSize="@dimen/pin_text_size" />
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/pod_search_indicator"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerInParent="true"
+		android:gravity="center"
+		android:orientation="vertical"
+		android:visibility="gone">
+
+		<ProgressBar
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:indeterminate="true" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/activity_vertical_margin"
+			android:text="@string/searching_for_pod"
+			android:textSize="@dimen/subtitle_text_size" />
+
+		<Button
+			android:id="@+id/pod_search_cancel"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/activity_vertical_margin"
+			android:onClick="handleClick"
+			android:text="@string/menu_cancel" />
+	</LinearLayout>
+
+	<RelativeLayout
+		android:id="@+id/pod_sync_indicator"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerInParent="true"
+		android:gravity="center"
+		android:visibility="visible">
+
+		<ProgressBar
+			android:id="@+id/sync_progress"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
+			android:indeterminate="true" />
+
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
+			android:contentDescription="@string/syncing_pod"
+			android:src="@drawable/ic_check_circle_amber_a700_36dp" />
+
+		<TextView
+			android:id="@+id/sync_progress_text"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/sync_progress"
+			android:layout_marginTop="72dp"
+			android:text="@string/syncing_pod"
+			android:textSize="@dimen/subtitle_text_size" />
+
+		<ProgressBar
+			android:id="@+id/sync_progress_count"
+			style="?android:attr/progressBarStyleHorizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignEnd="@id/sync_progress_text"
+			android:layout_alignLeft="@id/sync_progress_text"
+			android:layout_alignRight="@id/sync_progress_text"
+			android:layout_alignStart="@id/sync_progress_text"
+			android:layout_below="@id/sync_progress_text"
+			android:layout_marginTop="8dp"
+			android:indeterminate="false" />
+	</RelativeLayout>
+
+	<RelativeLayout
+		android:id="@+id/pod_own_sync_complete_indicator"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerInParent="true"
+		android:gravity="center"
+		android:visibility="gone">
+
+		<ImageView
+			android:id="@+id/sync_complete_icon"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:contentDescription="@string/syncing_pod"
+			android:src="@drawable/ic_check_circle_amber_a700_36dp" />
+
+		<TextView
+			android:id="@+id/pod_sync_complete_hint"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/sync_complete_icon"
+			android:layout_centerHorizontal="true"
+			android:layout_marginLeft="@dimen/welcome_text_horizontal_padding"
+			android:layout_marginRight="@dimen/welcome_text_horizontal_padding"
+			android:layout_marginTop="@dimen/activity_vertical_margin"
+			android:gravity="center"
+			android:onClick="handleClick"
+			android:text="@string/syncing_complete_show_data"
+			android:textSize="@dimen/subtitle_text_size" />
+
+		<Button
+			android:id="@+id/pod_sync_complete_disconnect"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/pod_sync_complete_hint"
+			android:layout_centerHorizontal="true"
+			android:layout_marginTop="72dp"
+			android:onClick="handleClick"
+			android:text="@string/syncing_complete_exit" />
+	</RelativeLayout>
+
+	<com.facebook.drawee.view.SimpleDraweeView
+		android:id="@+id/choose_app_background_image"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:contentDescription="@string/background_image"
+		android:visibility="gone"
+		fresco:actualImageScaleType="centerCrop"
+		fresco:failureImage="@drawable/background_1"
+		fresco:failureImageScaleType="centerCrop" />
+
+	<GridView
+		android:id="@+id/choose_app_grid"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:clipToPadding="false"
+		android:drawSelectorOnTop="true"
+		android:horizontalSpacing="1dp"
+		android:numColumns="@integer/image_grid_columns"
+		android:paddingBottom="24dp"
+		android:paddingTop="24dp"
+		android:scrollbarStyle="outsideOverlay"
+		android:stretchMode="columnWidth"
+		android:verticalSpacing="@dimen/app_grid_padding"
+		android:visibility="gone" />
+
+</RelativeLayout>

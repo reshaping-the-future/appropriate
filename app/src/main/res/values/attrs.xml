@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- custom XML attributes for SeekBarPreference -->
+	<declare-styleable name="SeekBarPreference">
+		<attr name="minVal" format="float" />
+		<attr name="maxVal" format="float" />
+		<attr name="interval" format="float" />
+		<attr name="prependUnits" format="string" />
+		<attr name="appendUnits" format="string" />
+	</declare-styleable>
+
+	<!-- preference keys -->
+	<string name="key_completed_initial_setup" translatable="false">key_completed_initial_setup</string>
+	<string name="key_sync_images" translatable="false">key_sync_images</string>
+	<string name="key_sync_sms" translatable="false">key_sync_sms</string>
+	<string name="key_sync_contacts" translatable="false">key_sync_contacts</string>
+	<string name="key_sync_automatically" translatable="false">key_sync_automatically</string>
+	<string name="key_sync_item_count" translatable="false">key_sync_item_count</string>
+	<string name="key_sync_item_frequency" translatable="false">key_sync_item_frequency</string>
+	<string name="key_own_pod_background" translatable="false">key_own_pod_background</string>
+	<string name="key_own_pod_pin" translatable="false">key_own_pod</string>
+	<string name="key_visitor_only_mode" translatable="false">key_visitor_only_mode</string>
+
+	<!-- preference options -->
+	<!-- used to use the more appropriate type="attr" for this, but that is now not allowed, so we use ha -->
+	<item name="default_item_sync_count" format="float" type="dimen">10</item>
+	<item name="item_sync_count_min" format="float" type="dimen">2</item>
+	<item name="item_sync_count_max" format="float" type="dimen">30</item>
+	<item name="item_sync_count_interval" format="float" type="dimen">1</item>
+</resources>

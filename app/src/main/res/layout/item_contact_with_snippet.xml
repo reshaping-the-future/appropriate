@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:padding="12dp">
+
+	<ImageView
+		android:id="@+id/contact_icon"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentStart="true"
+		android:contentDescription="@null"
+		android:src="@drawable/ic_message_purple_500_36dp" />
+
+	<TextView
+		android:id="@+id/contact_name"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="12dp"
+		android:layout_marginStart="12dp"
+		android:layout_toEndOf="@id/contact_icon"
+		android:layout_toRightOf="@id/contact_icon"
+		android:ellipsize="end"
+		android:gravity="center_vertical"
+		android:maxLines="1"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		tools:text="Contact" />
+
+	<TextView
+		android:id="@+id/message_snippet"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/contact_name"
+		android:layout_marginLeft="12dp"
+		android:layout_marginStart="12dp"
+		android:layout_toEndOf="@id/contact_icon"
+		android:layout_toRightOf="@id/contact_icon"
+		android:ellipsize="end"
+		android:gravity="center_vertical"
+		android:maxLines="1"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		tools:text="Message snippet" />
+
+</RelativeLayout>

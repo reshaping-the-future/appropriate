@@ -1,0 +1,91 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@android:color/transparent"
+	android:keepScreenOn="true">
+
+	<ac.robinson.pod.views.CustomSwipeViewPager
+		android:id="@+id/pager"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" />
+
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:layout_above="@+id/button_layout"
+		android:background="#33ffffff" />
+
+	<RelativeLayout
+		android:id="@+id/button_layout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:background="@android:color/transparent">
+
+		<ImageButton
+			android:id="@+id/btn_previous"
+			android:layout_width="@dimen/welcome_bar_button_width"
+			android:layout_height="@dimen/welcome_bar_height"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentStart="true"
+			android:background="@drawable/selectable_button_background"
+			android:contentDescription="@string/welcome_next"
+			android:gravity="center"
+			android:paddingBottom="@dimen/welcome_next_chevron_vertical_padding"
+			android:paddingTop="@dimen/welcome_next_chevron_vertical_padding"
+			android:scaleType="fitCenter"
+			android:src="@drawable/ic_toolbar_chevron_left_white_24dp"
+			android:visibility="gone" />
+		<!-- TODO: in RTL layouts the chevron here will be the wrong way around -->
+
+		<Button
+			android:id="@+id/btn_skip"
+			android:layout_width="@dimen/welcome_bar_button_width"
+			android:layout_height="@dimen/welcome_bar_height"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentStart="true"
+			android:layout_marginLeft="@dimen/welcome_skip_start_padding"
+			android:layout_marginRight="@dimen/welcome_skip_start_padding"
+			android:background="@drawable/selectable_button_background"
+			android:gravity="center"
+			android:text="@string/welcome_skip"
+			android:textColor="@color/text_color_primary_light"
+			android:textSize="18sp" />
+
+		<LinearLayout
+			android:id="@+id/welcome_activity_indicators"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
+			android:orientation="horizontal" />
+
+		<Button
+			android:id="@+id/done"
+			android:layout_width="@dimen/welcome_bar_button_width"
+			android:layout_height="@dimen/welcome_bar_height"
+			android:layout_alignParentEnd="true"
+			android:layout_alignParentRight="true"
+			android:background="@drawable/selectable_button_background"
+			android:gravity="center"
+			android:text="@string/welcome_done"
+			android:textColor="@color/text_color_primary_light"
+			android:textSize="18sp"
+			android:visibility="gone" />
+
+		<!-- TODO: in RTL layouts the chevron here will be the wrong way around -->
+		<ImageButton
+			android:id="@+id/btn_next"
+			android:layout_width="@dimen/welcome_bar_button_width"
+			android:layout_height="@dimen/welcome_bar_height"
+			android:layout_alignParentEnd="true"
+			android:layout_alignParentRight="true"
+			android:background="@drawable/selectable_button_background"
+			android:contentDescription="@string/welcome_next"
+			android:gravity="center"
+			android:paddingBottom="@dimen/welcome_next_chevron_vertical_padding"
+			android:paddingTop="@dimen/welcome_next_chevron_vertical_padding"
+			android:scaleType="fitCenter"
+			android:src="@drawable/ic_toolbar_chevron_right_white_24dp" />
+	</RelativeLayout>
+
+</RelativeLayout>

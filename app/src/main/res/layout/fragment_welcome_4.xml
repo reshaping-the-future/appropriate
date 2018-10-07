@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/welcome_fragment"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/welcome_page_4_background"
+	android:paddingBottom="@dimen/welcome_bottom_padding"
+	android:paddingTop="@dimen/welcome_top_padding">
+
+	<FrameLayout
+		android:id="@+id/welcome_screen_top_icon"
+		android:layout_width="match_parent"
+		android:layout_height="48dp"
+		android:layout_alignParentTop="true"
+		android:layout_marginBottom="@dimen/activity_vertical_margin"
+		android:clipChildren="false">
+
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:layout_marginLeft="@dimen/welcome_image_horizontal_padding"
+			android:layout_marginRight="@dimen/welcome_image_horizontal_padding"
+			android:contentDescription="@null"
+			android:scaleType="centerInside"
+			android:src="@mipmap/ic_launcher" />
+
+	</FrameLayout>
+
+	<TextView
+		android:id="@+id/welcome_screen_heading"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/welcome_screen_top_icon"
+		android:layout_marginBottom="@dimen/welcome_heading_bottom_margin"
+		android:gravity="bottom|center_horizontal"
+		android:paddingLeft="@dimen/welcome_text_horizontal_padding"
+		android:paddingRight="@dimen/welcome_text_horizontal_padding"
+		android:text="@string/title_select_sync_items"
+		android:textColor="@color/text_color_primary_light"
+		android:textSize="@dimen/welcome_heading_size" />
+
+	<ScrollView
+		android:id="@+id/welcome_screen_sync_selection"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_alignParentBottom="true"
+		android:layout_below="@id/welcome_screen_heading"
+		android:requiresFadingEdge="vertical">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:paddingLeft="@dimen/welcome_text_horizontal_padding"
+			android:paddingRight="@dimen/welcome_text_horizontal_padding">
+
+			<TextView
+				android:id="@+id/welcome_screen_description"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="2"
+				android:gravity="top|center_horizontal"
+				android:minHeight="@dimen/welcome_description_min_height"
+				android:text="@string/message_select_sync_items"
+				android:textColor="@color/text_color_secondary_light"
+				android:textSize="@dimen/welcome_description_size" />
+
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_horizontal"
+				android:orientation="vertical">
+
+				<CheckBox
+					android:id="@+id/welcome_sync_photos"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="@dimen/activity_vertical_margin"
+					android:layout_marginTop="@dimen/activity_vertical_margin"
+					android:checked="false"
+					android:drawableLeft="@android:color/transparent"
+					android:drawablePadding="@dimen/activity_horizontal_margin"
+					android:drawableStart="@android:color/transparent"
+					android:text="@string/title_sync_images"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@color/text_color_secondary_light"
+					android:textSize="@dimen/welcome_description_size" />
+
+				<CheckBox
+					android:id="@+id/welcome_sync_sms"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="@dimen/activity_vertical_margin"
+					android:layout_marginTop="@dimen/activity_vertical_margin"
+					android:checked="false"
+					android:drawableLeft="@android:color/transparent"
+					android:drawablePadding="@dimen/activity_horizontal_margin"
+					android:drawableStart="@android:color/transparent"
+					android:text="@string/title_sync_sms"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@color/text_color_secondary_light"
+					android:textSize="@dimen/welcome_description_size" />
+
+				<CheckBox
+					android:id="@+id/welcome_sync_contacts"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="@dimen/activity_vertical_margin"
+					android:layout_marginTop="@dimen/activity_vertical_margin"
+					android:checked="false"
+					android:drawableLeft="@android:color/transparent"
+					android:drawablePadding="@dimen/activity_horizontal_margin"
+					android:drawableStart="@android:color/transparent"
+					android:text="@string/title_sync_contacts"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="@color/text_color_secondary_light"
+					android:textSize="@dimen/welcome_description_size" />
+			</LinearLayout>
+		</LinearLayout>
+	</ScrollView>
+
+</RelativeLayout>
