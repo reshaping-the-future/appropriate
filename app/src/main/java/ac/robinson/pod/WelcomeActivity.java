@@ -570,25 +570,18 @@ public class WelcomeActivity extends BasePodActivity implements WelcomeFragment.
 				mSyncSMSCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 					@Override
 					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-						boolean noRead =
+						if (isChecked &&
 								ContextCompat.checkSelfPermission(WelcomeActivity.this, Manifest.permission
 										.READ_SMS) !=
-										PackageManager.PERMISSION_GRANTED;
-						boolean noSend =
-								ContextCompat.checkSelfPermission(WelcomeActivity.this, Manifest.permission
-										.SEND_SMS) !=
-										PackageManager.PERMISSION_GRANTED;
-						if (isChecked && noRead || noSend) {
+										PackageManager.PERMISSION_GRANTED) {
 							if (ActivityCompat.shouldShowRequestPermissionRationale(WelcomeActivity.this, Manifest
-									.permission.READ_SMS) ||
-									ActivityCompat.shouldShowRequestPermissionRationale(WelcomeActivity.this, Manifest
-											.permission.SEND_SMS)) {
+									.permission.READ_SMS)) {
 								Toast.makeText(WelcomeActivity.this, R.string.permission_sms_rationale, Toast
 										.LENGTH_LONG)
 										.show();
 							}
 							ActivityCompat.requestPermissions(WelcomeActivity.this, new String[]{
-									Manifest.permission.READ_SMS, Manifest.permission.SEND_SMS
+									Manifest.permission.READ_SMS
 							}, PERMISSION_SMS);
 						} else {
 							SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences
@@ -863,13 +856,9 @@ public class WelcomeActivity extends BasePodActivity implements WelcomeFragment.
 
 			case PERMISSION_SMS:
 				// TODO: could use grantResults but docs say permissions request can be interrupted and change length
-				boolean noReadSMS =
-						ContextCompat.checkSelfPermission(WelcomeActivity.this, Manifest.permission.READ_SMS) !=
+				boolean smsGranted =
+						ContextCompat.checkSelfPermission(WelcomeActivity.this, Manifest.permission.READ_SMS) ==
 								PackageManager.PERMISSION_GRANTED;
-				boolean noSendSMS =
-						ContextCompat.checkSelfPermission(WelcomeActivity.this, Manifest.permission.SEND_SMS) !=
-								PackageManager.PERMISSION_GRANTED;
-				boolean smsGranted = !(noReadSMS || noSendSMS);
 				if (!smsGranted) {
 					Toast.makeText(WelcomeActivity.this, R.string.permission_sms_error, Toast.LENGTH_LONG).show();
 					if (mSyncSMSCheckBox != null) {

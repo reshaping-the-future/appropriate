@@ -220,8 +220,6 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 			case SMSActivity.STORAGE_DIRECTORY_NAME:
 				return sharedPreferences.getBoolean(context.getString(R.string.key_sync_sms), false) &&
 						ContextCompat.checkSelfPermission(context, Manifest.permission.READ_SMS) ==
-								PackageManager.PERMISSION_GRANTED &&
-						ContextCompat.checkSelfPermission(context, Manifest.permission.SEND_SMS) ==
 								PackageManager.PERMISSION_GRANTED;
 			default:
 				return false;
@@ -294,17 +292,13 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 
 		} else if (getString(R.string.key_sync_sms).equals(key) && (Boolean) o) {
 			if (ContextCompat.checkSelfPermission(SettingsActivity.this, Manifest.permission.READ_SMS) !=
-					PackageManager.PERMISSION_GRANTED ||
-					ContextCompat.checkSelfPermission(SettingsActivity.this, Manifest.permission.SEND_SMS) !=
-							PackageManager.PERMISSION_GRANTED) {
+					PackageManager.PERMISSION_GRANTED) {
 				if (ActivityCompat.shouldShowRequestPermissionRationale(SettingsActivity.this, Manifest.permission
-						.READ_SMS) ||
-						ActivityCompat.shouldShowRequestPermissionRationale(SettingsActivity.this, Manifest.permission
-								.SEND_SMS)) {
+						.READ_SMS)) {
 					Toast.makeText(SettingsActivity.this, R.string.permission_sms_rationale, Toast.LENGTH_LONG).show();
 				}
 				ActivityCompat.requestPermissions(SettingsActivity.this, new String[]{
-						Manifest.permission.READ_SMS, Manifest.permission.SEND_SMS
+						Manifest.permission.READ_SMS
 				}, PERMISSION_SMS);
 			}
 
@@ -346,14 +340,8 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 
 			case PERMISSION_SMS:
 				// TODO: could use grantResults but docs say permissions request can be interrupted and change length
-				boolean noReadSMS =
-						ContextCompat.checkSelfPermission(SettingsActivity.this, Manifest.permission.READ_SMS) !=
-								PackageManager.PERMISSION_GRANTED;
-				boolean noSendSMS =
-						ContextCompat.checkSelfPermission(SettingsActivity.this, Manifest.permission.SEND_SMS) !=
-								PackageManager.PERMISSION_GRANTED;
-				boolean smsGranted = !(noReadSMS || noSendSMS);
-				if (!smsGranted) {
+				if (ContextCompat.checkSelfPermission(SettingsActivity.this, Manifest.permission.READ_SMS) !=
+						PackageManager.PERMISSION_GRANTED) {
 					Toast.makeText(SettingsActivity.this, R.string.permission_sms_error, Toast.LENGTH_LONG).show();
 					SwitchPreference preference = (SwitchPreference) findPreference(getString(R.string.key_sync_sms));
 					preference.setChecked(false);

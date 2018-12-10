@@ -42,7 +42,7 @@ dependencies {
 	implementation 'com.android.support:percent:28.0.0'
 	implementation 'com.android.support:design:28.0.0'
 
-	implementation 'com.facebook.fresco:fresco:1.10.0' // for simpler image loading
+	implementation 'com.facebook.fresco:fresco:1.11.0' // for simpler image loading
 	implementation 'com.squareup.okhttp3:okhttp:3.10.0' // for simpler android networking
 	implementation 'org.jsoup:jsoup:1.10.1' // for html parsing - TODO: later versions (e.g., 1.10.3) break sync - fix
 	implementation('de.ruedigermoeller:fst:2.51') {

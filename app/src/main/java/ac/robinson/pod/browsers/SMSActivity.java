@@ -68,19 +68,6 @@ public class SMSActivity extends BaseBrowserActivity {
 
 	@Override
 	public void processNewFile(Context context, File newFile, FileProcessedResponseListener responseListener) {
-		// manual sending:
-		//boolean alertShown = false;
-		//Intent smsIntent = new Intent(android.content.Intent.ACTION_VIEW);
-		//smsIntent.setType("vnd.android-dir/mms-sms");
-		//smsIntent.putExtra("address", currentThread.mContactNumber);
-		//smsIntent.putExtra("sms_body", message.mMessage);
-		//startActivity(smsIntent);
-		//
-		//if (!alertShown) {
-		//	Toast.makeText(SMSActivity.this, R.string.hint_press_send_to_deliver, Toast.LENGTH_SHORT).show();
-		//	alertShown = true;
-		//}
-
 		LinkedHashMap<String, SmsModel> smsThreads = loadSmsMessages(newFile.getAbsolutePath());
 		for (Map.Entry<String, SmsModel> entry : smsThreads.entrySet()) {
 			SmsModel currentThread = entry.getValue();

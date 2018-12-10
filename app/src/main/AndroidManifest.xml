@@ -12,7 +12,7 @@
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.READ_SMS" />
-	<uses-permission android:name="android.permission.SEND_SMS" />
+	<!--<uses-permission android:name="android.permission.SEND_SMS" />--> <!-- Google banned this in late 2018 -->
 	<uses-permission android:name="android.permission.READ_CONTACTS" />
 	<uses-permission android:name="android.permission.WRITE_CONTACTS" />
 	<uses-permission android:name="android.permission.CALL_PHONE" />
@@ -26,6 +26,7 @@
 		android:supportsRtl="true"
 		android:theme="@style/Theme.Pod"
 		android:usesCleartextTraffic="true"
+		tools:ignore="GoogleAppIndexingWarning"
 		tools:targetApi="m"><!-- targetApi is for usesCleartextTraffic, which is required to communicate with the Pod -->
 
 		<activity

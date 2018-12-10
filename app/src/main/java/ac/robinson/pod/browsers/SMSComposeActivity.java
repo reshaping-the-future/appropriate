@@ -6,12 +6,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
-import android.telephony.SmsManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -45,7 +45,6 @@ public class SMSComposeActivity extends BasePodActivity {
 	public static final String VISITOR_MODE = "visitor_mode";
 	public static final String SMS_FILE = "sms_file";
 	public static final String TAG = "SMSComposeActivity";
-	private static final int PERMISSION_SEND_SMS = 106;
 
 	private String mContactNumber;
 	private String mContactName;
@@ -155,17 +154,6 @@ public class SMSComposeActivity extends BasePodActivity {
 			return;
 		}
 
-		if (ContextCompat.checkSelfPermission(SMSComposeActivity.this, Manifest.permission.SEND_SMS) !=
-				PackageManager.PERMISSION_GRANTED) {
-			if (ActivityCompat.shouldShowRequestPermissionRationale(SMSComposeActivity.this, Manifest.permission
-					.SEND_SMS)) {
-				Toast.makeText(SMSComposeActivity.this, R.string.permission_sms_rationale, Toast.LENGTH_SHORT).show();
-			}
-			ActivityCompat.requestPermissions(SMSComposeActivity.this, new String[]{ Manifest.permission.SEND_SMS },
-					PERMISSION_SEND_SMS);
-			return;
-		}
-
 		SmsModel selectedThread = null;
 		final LinkedHashMap<String, SmsModel> smsItems = SMSActivity.loadSmsMessages(mFilePath);
 		for (Map.Entry<String, SmsModel> entry : smsItems.entrySet()) {
@@ -247,10 +235,27 @@ public class SMSComposeActivity extends BasePodActivity {
 	}
 
 	public static void sendSMS(Context context, String number, String text, boolean appendPodNote) {
-		SmsManager smsManager = SmsManager.getDefault();
 		String message = text + (appendPodNote ? context.getString(R.string.pod_sms_note) : "");
-		ArrayList<String> parts = smsManager.divideMessage(message);
-		smsManager.sendMultipartTextMessage(number, null, parts, null, null);
+
+		// note: as of late 2018 this is now banned (and Google rejected an exception for this app)
+		// SmsManager smsManager = SmsManager.getDefault();
+		// ArrayList<String> parts = smsManager.divideMessage(message);
+		// smsManager.sendMultipartTextMessage(number, null, parts, null, null);
+
+		// we now have to resort to manual sending, for which there are two options (first probably outdated)
+		//Intent smsIntent = new Intent(android.content.Intent.ACTION_VIEW);
+		//smsIntent.setType("vnd.android-dir/mms-sms");
+		//smsIntent.putExtra("address", number);
+		//smsIntent.putExtra("sms_body", message);
+
+		Intent smsIntent = new Intent(Intent.ACTION_SEND);
+		smsIntent.setData(Uri.parse("smsto:" + number));  // This ensures only SMS apps respond
+		smsIntent.putExtra("sms_body", message);
+
+		if (smsIntent.resolveActivity(context.getPackageManager()) != null) {
+			context.startActivity(smsIntent);
+			Toast.makeText(context, R.string.hint_press_send_to_deliver, Toast.LENGTH_SHORT).show();
+		}
 	}
 
 	private class ListAdapter extends BaseAdapter {
@@ -316,21 +321,5 @@ public class SMSComposeActivity extends BasePodActivity {
 	private static class MessageViewHolder {
 		TextView messageLeft;
 		TextView messageRight;
-	}
-
-	@Override
-	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[]
-			grantResults) {
-		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-		switch (requestCode) {
-			case PERMISSION_SEND_SMS:
-				if (grantResults.length > 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-					Toast.makeText(SMSComposeActivity.this, R.string.permission_sms_error, Toast.LENGTH_SHORT).show();
-				}
-				break;
-
-			default:
-				break;
-		}
 	}
 }
