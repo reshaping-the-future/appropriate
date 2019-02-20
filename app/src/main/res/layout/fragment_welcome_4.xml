@@ -88,21 +88,6 @@
 					android:textSize="@dimen/welcome_description_size" />
 
 				<CheckBox
-					android:id="@+id/welcome_sync_sms"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginBottom="@dimen/activity_vertical_margin"
-					android:layout_marginTop="@dimen/activity_vertical_margin"
-					android:checked="false"
-					android:drawableLeft="@android:color/transparent"
-					android:drawablePadding="@dimen/activity_horizontal_margin"
-					android:drawableStart="@android:color/transparent"
-					android:text="@string/title_sync_sms"
-					android:textAppearance="?android:attr/textAppearanceMedium"
-					android:textColor="@color/text_color_secondary_light"
-					android:textSize="@dimen/welcome_description_size" />
-
-				<CheckBox
 					android:id="@+id/welcome_sync_contacts"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"

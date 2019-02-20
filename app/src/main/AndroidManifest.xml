@@ -11,8 +11,8 @@
 
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<uses-permission android:name="android.permission.READ_SMS" />
 	<!--<uses-permission android:name="android.permission.SEND_SMS" />--> <!-- Google banned this in late 2018 -->
+	<!--<uses-permission android:name="android.permission.READ_SMS" />--> <!-- Despite discussion, also forbidden -->
 	<uses-permission android:name="android.permission.READ_CONTACTS" />
 	<uses-permission android:name="android.permission.WRITE_CONTACTS" />
 	<uses-permission android:name="android.permission.CALL_PHONE" />
@@ -52,14 +52,6 @@
 		<activity
 			android:name=".browsers.GalleryActivity"
 			android:label="@string/title_gallery_browser" />
-
-		<activity
-			android:name=".browsers.SMSActivity"
-			android:label="@string/title_sms_browser" />
-
-		<activity
-			android:name=".browsers.SMSComposeActivity"
-			android:windowSoftInputMode="stateUnchanged" />
 
 		<activity
 			android:name=".browsers.ContactsActivity"

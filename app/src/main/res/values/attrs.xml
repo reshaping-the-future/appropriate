@@ -12,7 +12,6 @@
 	<!-- preference keys -->
 	<string name="key_completed_initial_setup" translatable="false">key_completed_initial_setup</string>
 	<string name="key_sync_images" translatable="false">key_sync_images</string>
-	<string name="key_sync_sms" translatable="false">key_sync_sms</string>
 	<string name="key_sync_contacts" translatable="false">key_sync_contacts</string>
 	<string name="key_sync_automatically" translatable="false">key_sync_automatically</string>
 	<string name="key_sync_item_count" translatable="false">key_sync_item_count</string>

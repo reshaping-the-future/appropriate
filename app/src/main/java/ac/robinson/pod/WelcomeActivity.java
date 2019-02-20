@@ -36,7 +36,6 @@ import android.widget.Toast;
 
 import ac.robinson.pod.browsers.ContactsActivity;
 import ac.robinson.pod.browsers.GalleryActivity;
-import ac.robinson.pod.browsers.SMSActivity;
 import ac.robinson.pod.listeners.PodResponseListener;
 import ac.robinson.pod.service.PodManagerService;
 import ac.robinson.pod.views.CustomSwipeViewPager;
@@ -53,7 +52,6 @@ public class WelcomeActivity extends BasePodActivity implements WelcomeFragment.
 	private static final int WELCOME_PAGES = 6;
 
 	private static final int PERMISSION_WRITE_STORAGE = 105;
-	private static final int PERMISSION_SMS = 106;
 	private static final int PERMISSION_CONTACTS = 107;
 	private static final int PERMISSION_COARSE_LOCATION = 108;
 
@@ -65,7 +63,6 @@ public class WelcomeActivity extends BasePodActivity implements WelcomeFragment.
 	private ImageButton mNextButton;
 	private EditText mPodConnectionPin;
 	private CheckBox mSyncPhotosCheckBox;
-	private CheckBox mSyncSMSCheckBox;
 	private CheckBox mSyncContactsCheckBox;
 
 	private int mNewPodPin = -1;
@@ -537,7 +534,6 @@ public class WelcomeActivity extends BasePodActivity implements WelcomeFragment.
 
 			if (position == 4) {
 				mSyncPhotosCheckBox = findViewById(R.id.welcome_sync_photos);
-				mSyncSMSCheckBox = findViewById(R.id.welcome_sync_sms);
 				mSyncContactsCheckBox = findViewById(R.id.welcome_sync_contacts);
 
 				mSyncPhotosCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -561,33 +557,6 @@ public class WelcomeActivity extends BasePodActivity implements WelcomeFragment.
 									(WelcomeActivity.this);
 							SharedPreferences.Editor editor = preferences.edit();
 							editor.putBoolean(getString(R.string.key_sync_images), isChecked);
-							editor.apply();
-						}
-					}
-				});
-
-				// TODO: this currently requests permissions twice if the first attempt is denied
-				mSyncSMSCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-					@Override
-					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-						if (isChecked &&
-								ContextCompat.checkSelfPermission(WelcomeActivity.this, Manifest.permission
-										.READ_SMS) !=
-										PackageManager.PERMISSION_GRANTED) {
-							if (ActivityCompat.shouldShowRequestPermissionRationale(WelcomeActivity.this, Manifest
-									.permission.READ_SMS)) {
-								Toast.makeText(WelcomeActivity.this, R.string.permission_sms_rationale, Toast
-										.LENGTH_LONG)
-										.show();
-							}
-							ActivityCompat.requestPermissions(WelcomeActivity.this, new String[]{
-									Manifest.permission.READ_SMS
-							}, PERMISSION_SMS);
-						} else {
-							SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences
-									(WelcomeActivity.this);
-							SharedPreferences.Editor editor = preferences.edit();
-							editor.putBoolean(getString(R.string.key_sync_sms), isChecked);
 							editor.apply();
 						}
 					}
@@ -629,10 +598,6 @@ public class WelcomeActivity extends BasePodActivity implements WelcomeFragment.
 
 				if (SettingsActivity.getShouldSync(WelcomeActivity.this, GalleryActivity.STORAGE_DIRECTORY_NAME)) {
 					mSyncPhotosCheckBox.setChecked(true);
-				}
-
-				if (SettingsActivity.getShouldSync(WelcomeActivity.this, SMSActivity.STORAGE_DIRECTORY_NAME)) {
-					mSyncSMSCheckBox.setChecked(true);
 				}
 
 				if (SettingsActivity.getShouldSync(WelcomeActivity.this, ContactsActivity.STORAGE_DIRECTORY_NAME)) {
@@ -852,20 +817,6 @@ public class WelcomeActivity extends BasePodActivity implements WelcomeFragment.
 					}
 				}
 				editor.putBoolean(getString(R.string.key_sync_images), photosGranted);
-				break;
-
-			case PERMISSION_SMS:
-				// TODO: could use grantResults but docs say permissions request can be interrupted and change length
-				boolean smsGranted =
-						ContextCompat.checkSelfPermission(WelcomeActivity.this, Manifest.permission.READ_SMS) ==
-								PackageManager.PERMISSION_GRANTED;
-				if (!smsGranted) {
-					Toast.makeText(WelcomeActivity.this, R.string.permission_sms_error, Toast.LENGTH_LONG).show();
-					if (mSyncSMSCheckBox != null) {
-						mSyncSMSCheckBox.setChecked(false);
-					}
-				}
-				editor.putBoolean(getString(R.string.key_sync_sms), smsGranted);
 				break;
 
 			case PERMISSION_CONTACTS:

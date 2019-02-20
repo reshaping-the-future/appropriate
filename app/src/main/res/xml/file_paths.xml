@@ -6,10 +6,4 @@
 	<cache-path
 		name="visitor_gallery"
 		path="gallery/" />
-	<files-path
-		name="own_sms"
-		path="sms/" />
-	<cache-path
-		name="visitor_sms"
-		path="sms/" />
 </paths>

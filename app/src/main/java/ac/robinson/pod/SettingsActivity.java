@@ -31,7 +31,6 @@ import android.widget.Toast;
 
 import ac.robinson.pod.browsers.ContactsActivity;
 import ac.robinson.pod.browsers.GalleryActivity;
-import ac.robinson.pod.browsers.SMSActivity;
 import ac.robinson.pod.service.PodManagerServiceCommunicator;
 
 import static ac.robinson.pod.R.xml.preferences;
@@ -43,8 +42,7 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 	private AppCompatDelegate mDelegate;
 
 	private static final int PERMISSION_WRITE_STORAGE = 102;
-	private static final int PERMISSION_SMS = 103;
-	private static final int PERMISSION_CONTACTS = 104;
+	private static final int PERMISSION_CONTACTS = 103;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -217,10 +215,6 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 								PackageManager.PERMISSION_GRANTED &&
 						ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_CONTACTS) ==
 								PackageManager.PERMISSION_GRANTED;
-			case SMSActivity.STORAGE_DIRECTORY_NAME:
-				return sharedPreferences.getBoolean(context.getString(R.string.key_sync_sms), false) &&
-						ContextCompat.checkSelfPermission(context, Manifest.permission.READ_SMS) ==
-								PackageManager.PERMISSION_GRANTED;
 			default:
 				return false;
 		}
@@ -255,7 +249,7 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 		addPreferencesFromResource(preferences);
 
 		int[] preferencesRequiringPermissions = {
-				R.string.key_sync_images, R.string.key_sync_sms, R.string.key_sync_contacts
+				R.string.key_sync_images, R.string.key_sync_contacts
 		};
 		for (int preferenceKey : preferencesRequiringPermissions) {
 			SwitchPreference preference = (SwitchPreference) findPreference(getString(preferenceKey));
@@ -290,18 +284,6 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 				}, PERMISSION_WRITE_STORAGE);
 			}
 
-		} else if (getString(R.string.key_sync_sms).equals(key) && (Boolean) o) {
-			if (ContextCompat.checkSelfPermission(SettingsActivity.this, Manifest.permission.READ_SMS) !=
-					PackageManager.PERMISSION_GRANTED) {
-				if (ActivityCompat.shouldShowRequestPermissionRationale(SettingsActivity.this, Manifest.permission
-						.READ_SMS)) {
-					Toast.makeText(SettingsActivity.this, R.string.permission_sms_rationale, Toast.LENGTH_LONG).show();
-				}
-				ActivityCompat.requestPermissions(SettingsActivity.this, new String[]{
-						Manifest.permission.READ_SMS
-				}, PERMISSION_SMS);
-			}
-
 		} else if (getString(R.string.key_sync_contacts).equals(key) && (Boolean) o) {
 			if (ContextCompat.checkSelfPermission(SettingsActivity.this, Manifest.permission.READ_CONTACTS) !=
 					PackageManager.PERMISSION_GRANTED ||
@@ -334,16 +316,6 @@ public class SettingsActivity extends PreferenceActivity implements OnPreference
 							.show();
 					SwitchPreference preference = (SwitchPreference) findPreference(getString(R.string
 							.key_sync_images));
-					preference.setChecked(false);
-				}
-				break;
-
-			case PERMISSION_SMS:
-				// TODO: could use grantResults but docs say permissions request can be interrupted and change length
-				if (ContextCompat.checkSelfPermission(SettingsActivity.this, Manifest.permission.READ_SMS) !=
-						PackageManager.PERMISSION_GRANTED) {
-					Toast.makeText(SettingsActivity.this, R.string.permission_sms_error, Toast.LENGTH_LONG).show();
-					SwitchPreference preference = (SwitchPreference) findPreference(getString(R.string.key_sync_sms));
 					preference.setChecked(false);
 				}
 				break;

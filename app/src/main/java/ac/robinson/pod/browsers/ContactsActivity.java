@@ -153,8 +153,7 @@ public class ContactsActivity extends BaseBrowserActivity {
 	--------------------------------------------------------------------------------------------------------------------
 	 */
 
-	private static final int CAPTURE_SMS = 202;
-	private static final int CAPTURE_CONTACT = 203;
+	private static final int CAPTURE_CONTACT = 202;
 
 	private ArrayList<String> mMediaItems;
 	private ListAdapter mListAdapter;
@@ -207,10 +206,10 @@ public class ContactsActivity extends BaseBrowserActivity {
 				Intent launchIntent = new Intent(ContactsActivity.this, ContactAddActivity.class);
 				// launchIntent.putExtra(ContactAddActivity.CONTACT_FILE, mMediaItems.get(0));
 				//hacky! (but we need to be able to handle the case where there are no contacts)
-				File smsFile = new File(getVisitorSyncPath(ContactsActivity.this, getVisitorId(), ContactsActivity
+				File contactsFile = new File(getVisitorSyncPath(ContactsActivity.this, getVisitorId(), ContactsActivity
 						.STORAGE_DIRECTORY_NAME),
 						ContactsActivity.STORAGE_DIRECTORY_NAME + PodManagerService.POD_CONFIGURATION_FILE_NAME);
-				launchIntent.putExtra(ContactAddActivity.CONTACT_FILE, smsFile.getAbsolutePath());
+				launchIntent.putExtra(ContactAddActivity.CONTACT_FILE, contactsFile.getAbsolutePath());
 				startActivityForResult(launchIntent, CAPTURE_CONTACT);
 				break;
 
@@ -307,12 +306,6 @@ public class ContactsActivity extends BaseBrowserActivity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
-			case CAPTURE_SMS:
-				if (resultCode == BaseBrowserActivity.MEDIA_UPDATED) {
-					setHasEdited(true);
-				}
-				break;
-
 			case CAPTURE_CONTACT:
 				if (resultCode == BaseBrowserActivity.MEDIA_UPDATED) {
 					mMediaItems = getMediaItemList();
@@ -408,59 +401,36 @@ public class ContactsActivity extends BaseBrowserActivity {
 				if (visitorWithSIM) {
 					arrayAdapter.add("Call " + number);
 				}
-				arrayAdapter.add((isVisitor() ? "Send SMS to " : "") + number);
 			}
 			dialog.setAdapter(arrayAdapter, !isVisitor() ? null : new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// hacky! - we only allow visitors to call or send messages
-					File smsFile = new File(getVisitorSyncPath(ContactsActivity.this, getVisitorId(), SMSActivity
-							.STORAGE_DIRECTORY_NAME),
-							SMSActivity.STORAGE_DIRECTORY_NAME + PodManagerService.POD_CONFIGURATION_FILE_NAME);
-
-					// only phones with SIMs can call; others can only SMS (later, on sync)
+					// only phones with SIMs can call
 					if (hasSim) {
 						String number = currentContact.mMobileNumbers.get((int) Math.floor(which / 2));
-						if (which % 2 == 0) {
-							Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
-							if (ContextCompat.checkSelfPermission(ContactsActivity.this, Manifest.permission
-									.CALL_PHONE) !=
-									PackageManager.PERMISSION_GRANTED) {
+						Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
+						if (ContextCompat.checkSelfPermission(ContactsActivity.this, Manifest.permission
+								.CALL_PHONE) !=
+								PackageManager.PERMISSION_GRANTED) {
 
-								if (ActivityCompat.shouldShowRequestPermissionRationale(ContactsActivity.this,
-										Manifest.permission.CALL_PHONE)) {
-									Toast.makeText(ContactsActivity.this, R.string.permission_call_phone_rationale,
-											Toast.LENGTH_SHORT)
-											.show();
-								}
-								ActivityCompat.requestPermissions(ContactsActivity.this, new String[]{
-										Manifest.permission.CALL_PHONE
-								}, PERMISSION_CALL_PHONE);
-							} else {
-								try {
-									startActivity(intent);
-								} catch (Exception ignored) {
-									Toast.makeText(ContactsActivity.this, R.string.permission_call_phone_error, Toast
-											.LENGTH_SHORT)
-											.show(); // TODO: this is not necessarily permission related
-								}
+							if (ActivityCompat.shouldShowRequestPermissionRationale(ContactsActivity.this,
+									Manifest.permission.CALL_PHONE)) {
+								Toast.makeText(ContactsActivity.this, R.string.permission_call_phone_rationale,
+										Toast.LENGTH_SHORT)
+										.show();
 							}
+							ActivityCompat.requestPermissions(ContactsActivity.this, new String[]{
+									Manifest.permission.CALL_PHONE
+							}, PERMISSION_CALL_PHONE);
 						} else {
-							Intent launchIntent = new Intent(ContactsActivity.this, SMSComposeActivity.class);
-							launchIntent.putExtra(SMSComposeActivity.CONTACT_NUMBER, number);
-							launchIntent.putExtra(SMSComposeActivity.CONTACT_NAME, currentContact.mName);
-							launchIntent.putExtra(SMSComposeActivity.VISITOR_MODE, true);
-							launchIntent.putExtra(SMSComposeActivity.SMS_FILE, smsFile.getAbsolutePath());
-							startActivityForResult(launchIntent, CAPTURE_SMS);
+							try {
+								startActivity(intent);
+							} catch (Exception ignored) {
+								Toast.makeText(ContactsActivity.this, R.string.permission_call_phone_error, Toast
+										.LENGTH_SHORT)
+										.show(); // TODO: this is not necessarily permission related
+							}
 						}
-					} else {
-						String number = currentContact.mMobileNumbers.get(which);
-						Intent launchIntent = new Intent(ContactsActivity.this, SMSComposeActivity.class);
-						launchIntent.putExtra(SMSComposeActivity.CONTACT_NUMBER, number);
-						launchIntent.putExtra(SMSComposeActivity.CONTACT_NAME, currentContact.mName);
-						launchIntent.putExtra(SMSComposeActivity.VISITOR_MODE, true);
-						launchIntent.putExtra(SMSComposeActivity.SMS_FILE, smsFile.getAbsolutePath());
-						startActivityForResult(launchIntent, CAPTURE_SMS);
 					}
 				}
 			});

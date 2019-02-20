@@ -37,17 +37,6 @@
 	<string name="hint_own_data_sync_complete">Synchronisation complete</string>
 	<string name="hint_visitor_data_sync_complete">Visitor data synchronisation complete</string>
 	<string name="hint_visitor_data_removed">Browsing finished – your data has been removed from this phone</string>
-	<string name="hint_type_message">Type your message</string>
-	<string name="hint_error_reading_messages">Error reading messages - please try again</string>
-	<string name="hint_error_saving_messages">Error saving messages - please try again</string>
-	<string name="send_button">Send message</string>
-	<string name="title_send_sms">Send message</string>
-	<string name="message_send_sms">Send now, from this phone number, or wait until you return to your own phone?</string>
-	<string name="menu_now">Send now</string>
-	<string name="menu_later">Send later</string>
-	<string name="pod_sms_note">\n\nSent from my APPropriate</string>
-	<string name="hint_press_send_to_deliver">Press send to deliver your message now</string>
-	<string name="hint_messages_saved_for_later">Your message will be sent when you synchronise with your own phone</string>
 	<string name="media_thumbnail_image">Media thumbnail image</string>
 	<string name="title_change_background">Background image</string>
 	<string name="message_change_background_succeeded">Background image successfully changed</string>
@@ -61,7 +50,6 @@
 	<string name="no_media_add_own">No media found – touch + to add items</string>
 	<string name="no_suitable_app_found">Error: no app found to handle this action</string>
 	<string name="title_gallery_browser">Photo gallery</string>
-	<string name="title_sms_browser">Text messages</string>
 	<string name="title_contacts_browser">Contacts</string>
 	<string name="title_add_contact">Add contact</string>
 	<string name="title_audio_browser">Music library</string>
@@ -71,6 +59,7 @@
 	<string name="hint_add_contact_number">Phone number</string>
 	<string name="hint_add_contact_save">Save</string>
 	<string name="hint_add_contact_empty">Please make sure you have entered a contact name and number before saving</string>
+	<string name="hint_error_saving_contact">Error saving contact - please try again</string>
 
 	<!-- preference values -->
 	<string name="summary_double_tap_to_restore">Double tap to restore default</string>
@@ -78,8 +67,6 @@
 	<string name="title_items_to_sync">Items to synchronise</string>
 	<string name="title_sync_images">Photos</string>
 	<string name="summary_sync_images">Save photos to your APPropriate</string>
-	<string name="title_sync_sms">SMS messages</string>
-	<string name="summary_sync_sms">Save SMS messages to your APPropriate</string>
 	<string name="title_sync_contacts">Contacts</string>
 	<string name="summary_sync_contacts">Save contacts to your APPropriate</string>
 	<string name="title_sync_preferences">Synchronisation preferences</string>
@@ -120,8 +107,6 @@
 	<string name="permission_access_coarse_location_error">Error: APPropriate has not been granted location access, so will not be able to connect. Please allow APPropriate to access location and try again</string>
 	<string name="permission_write_storage_rationale">APPropriate needs storage access in order to synchronise photos. Please grant this permission to enable this feature</string>
 	<string name="permission_write_storage_error">Error: APPropriate has not been granted storage access. Please allow APPropriate to access storage and try again</string>
-	<string name="permission_sms_rationale">APPropriate needs SMS access in order to synchronise text messages. Please grant this permission to enable this feature</string>
-	<string name="permission_sms_error">Error: APPropriate has not been granted SMS access. Please allow APPropriate to access SMS messages and try again</string>
 	<string name="permission_contacts_rationale">APPropriate needs Contacts access in order to synchronise your contacts. Please grant this permission to enable this feature</string>
 	<string name="permission_contacts_error">Error: APPropriate has not been granted Contacts access. Please allow APPropriate to access Contacts and try again</string>
 	<string name="permission_call_phone_rationale">APPropriate needs phone access in order to make phone calls. Please grant this permission to enable this feature</string>

@@ -107,7 +107,7 @@ public class ContactAddActivity extends BasePodActivity {
 			ContactModel.writeContactList(fileOutputStream, newContactItems);
 		} catch (IOException e) {
 			Log.d(TAG, "Unable to save contact - permission or storage error?");
-			Toast.makeText(ContactAddActivity.this, R.string.hint_error_saving_messages, Toast.LENGTH_SHORT).show();
+			Toast.makeText(ContactAddActivity.this, R.string.hint_error_saving_contact, Toast.LENGTH_SHORT).show();
 			return;
 		} finally {
 			Utilities.closeStream(fileOutputStream);

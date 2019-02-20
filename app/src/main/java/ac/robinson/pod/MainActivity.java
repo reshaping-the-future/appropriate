@@ -49,7 +49,6 @@ import java.util.Iterator;
 
 import ac.robinson.pod.browsers.ContactsActivity;
 import ac.robinson.pod.browsers.GalleryActivity;
-import ac.robinson.pod.browsers.SMSActivity;
 import ac.robinson.pod.listeners.FileProcessedResponseListener;
 import ac.robinson.pod.listeners.PodResponseDirectoryContentListener;
 import ac.robinson.pod.listeners.PodResponseListener;
@@ -132,8 +131,6 @@ public class MainActivity extends BasePodActivity {
 				GalleryActivity.STORAGE_DIRECTORY_NAME, false));
 		sApps.add(new AppLauncher(ContactsActivity.class, R.drawable.ic_contacts, R.string.title_contacts_browser,
 				ContactsActivity.STORAGE_DIRECTORY_NAME, true));
-		sApps.add(new AppLauncher(SMSActivity.class, R.drawable.ic_messenger, R.string.title_sms_browser, SMSActivity
-				.STORAGE_DIRECTORY_NAME, true));
 	}
 
 	@Override

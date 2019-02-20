@@ -11,12 +11,6 @@
 
 		<SwitchPreference
 			android:defaultValue="false"
-			android:key="@string/key_sync_sms"
-			android:summary="@string/summary_sync_sms"
-			android:title="@string/title_sync_sms" />
-
-		<SwitchPreference
-			android:defaultValue="false"
 			android:key="@string/key_sync_contacts"
 			android:summary="@string/summary_sync_contacts"
 			android:title="@string/title_sync_contacts" />

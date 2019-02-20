@@ -7,8 +7,8 @@ android {
 		applicationId 'ac.robinson.pod'
 		minSdkVersion 14
 		targetSdkVersion 28
-		versionCode 9
-		versionName '1.2'
+		versionCode 11
+		versionName '1.4'
 		resConfigs 'en'
 	}
 
