@@ -24,23 +24,23 @@ The following steps assume that you own one of these devices (and that it has an
 
 3. Connect to the `Verbatim-XXXX` WiFi network, which should now be visible (where `XXXX` represents the four characters printed on the back of your APPropriate). The default password is `verbatim`.
 
-6. Visit http://10.10.10.254 in a web browser, and log in as `admin`, leaving the password field blank. Click on `Settings`.
+4. Visit http://10.10.10.254 in a web browser, and log in as `admin`, leaving the password field blank. Click on `Settings`.
 
-7. Update the APPropriate's configuration, setting the following options:
+5. Update the APPropriate's configuration, setting the following options:
 
-    7.1. User Manager > Admin: Set the password to the same value you have chosen for `project.ext.adminPassword` in [config.gradle](app/config.gradle).
+    5.1. User Manager > Admin: Set the password to the same value you have chosen for `project.ext.adminPassword` in [config.gradle](app/config.gradle).
     
-    7.2. Services Settings > Samba Service: Disable this service (note: the selected value is the one highlighted in blue)
+    5.2. Services Settings > Samba Service: Disable this service (note: the selected value is the one highlighted in blue)
     
-    7.3. Services Settings > Media Service: Disable this service (note: the selected value is the one highlighted in blue)
+    5.3. Services Settings > Media Service: Disable this service (note: the selected value is the one highlighted in blue)
     
-    7.2. System Settings > Time Settings: Turn off `Automatically synchronize with an Internet Time Server` (note: the selected value is the one highlighted in blue). Set the date and time to the correct current values.
+    5.2. System Settings > Time Settings: Turn off `Automatically synchronize with an Internet Time Server` (note: the selected value is the one highlighted in blue). Set the date and time to the correct current values.
     
-    7.4. Network Settings > Wi-Fi & LAN: Set SSID to `Pod-5feceb66ffc86f38`, security to `WPA2-PSK` and password to the same one you have chosen for `project.ext.networkPassword` in [config.gradle](app/config.gradle).
+    5.4. Network Settings > Wi-Fi & LAN: Set SSID to `Pod-5feceb66ffc86f38`, security to `WPA2-PSK` and password to the same one you have chosen for `project.ext.networkPassword` in [config.gradle](app/config.gradle).
 
-8. Save your changes to the APPropriate's configuration, and then wait for the device to restart itself (see status indicator light stages in step 1).
+6. Save your changes to the APPropriate's configuration, and then wait for the device to restart itself (see status indicator light stages in step 1).
 
-9. Open the APPropriate Android app, and enter the PIN `0000` to connect to your newly set up device. You can now proceed through the synchronisation instructions in the app, and change your PIN to a more secure and private one.
+7. Open the APPropriate Android app, and enter the PIN `0000` to connect to your newly set up device. You can now proceed through the synchronisation instructions in the app, and change your PIN to a more secure and private one.
 
 ## License
 Apache 2.0
